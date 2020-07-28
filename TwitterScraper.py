@@ -2,6 +2,8 @@ import json
 import csv
 import tweepy
 import re
+import numpy as np
+from PIL import Image
 
 # Twitter authentication (insert your own credentials here)
 # consumer_key, consumer_secret
@@ -37,7 +39,10 @@ stopwords=["https", "co"]
 for word in terms_split:
     stopwords.append(word)
 
-cloud = WordCloud(background_color="white", stopwords=STOPWORDS.union(stopwords), width=1800, height=1400).generate(cloud)
+# add mask
+mask = np.array(Image.open('/football.png'))
+
+cloud = WordCloud(background_color="white", stopwords=STOPWORDS.union(stopwords), width=1800, height=1400, mask=mask).generate(cloud)
 plt.figure(figsize = (12, 6))
 plt.imshow(cloud, interpolation="bilinear")
 plt.axis('off')
