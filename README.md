@@ -15,4 +15,4 @@ access_token = ""
 access_token_secret = ""
 auth.set_access_token(access_token, access_token_secret)
 ```
-
+2. I personally used Google Colab but you can use other platforms
